@@ -1,1 +1,24 @@
-// backend will be here
+import connectToMongo from "./config/db";
+import express from "express";
+import cors from "cors";
+
+// connect with database
+connectToMongo();
+
+const app = express();
+
+// port number.
+const port = 5000;
+
+app.use(cors());
+// we are using middleware to convert raw json data into js object. 
+app.use(express.json());
+
+// available routes in the project
+app.use("/api/auth", require("./routes/auth"));
+app.use("/api/task", require("./routes/task"));
+app.use("/api/editProfile" , require("./routes/editProfile"));
+
+app.listen(port, () => {
+  console.log(`task-backend is working on port number :  ${port}`);
+});
