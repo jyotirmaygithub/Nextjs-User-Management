@@ -1,3 +1,6 @@
-export default async function Home() {
-  return <p>Home page</p>;
+export default function Home() {
+  return (
+    <div className="flex justify-center items-center">
+    </div>
+  )
 }
