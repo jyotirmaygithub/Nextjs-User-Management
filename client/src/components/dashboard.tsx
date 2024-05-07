@@ -1,11 +1,12 @@
 import React from "react";
 import { auth, currentUser } from "@clerk/nextjs/server";
-import { Container, Typography, Box } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { UserProfile } from "@clerk/nextjs";
 
-export default async function dashboard() {
+export default async function Dashboard() {
   const { userId } = auth();
   const user = await currentUser();
+
   if (!userId || !user) {
     return (
       <Container className="flex justify-center mt-20">
@@ -15,10 +16,8 @@ export default async function dashboard() {
   }
 
   return (
-    <>
-      <div className="flex justify-center items-center">
+    <Container className="flex justify-center mt-20">
       <UserProfile routing="hash" />
-      </div>
-    </>
+    </Container>
   );
 }
